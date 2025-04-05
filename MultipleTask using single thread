@@ -1,0 +1,25 @@
+import java.lang.Thread;
+class Task1 extends Thread{
+    public void run(){
+        System.out.println("Task 1 is running");
+        System.out.println(Thread.currentThread().getName()+"is running "+Thread.currentThread().getPriority());
+    }
+}
+class Task2 extends Thread{
+    public void run(){
+        System.out.println("Task 2 is running");
+        System.out.println(Thread.currentThread().getName()+"is running "+Thread.currentThread().getPriority());
+    }
+}
+public class MultipleTask {
+    public static void main(String[] args) {
+        Task1 task1 = new Task1();
+        Thread t1 = new Thread(task1);
+        Task2 task2 = new Task2();
+        Thread t2 = new Thread(task2);
+        t2.setPriority(8);
+        t1.setPriority(5);
+        t1.start();
+        t2.start();
+    }
+}
